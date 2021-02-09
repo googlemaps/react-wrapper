@@ -11,52 +11,49 @@
 Wrap React components with this libary to load the Google Maps JavaScript API.
 
 ``` javascript
-import { Wrapper } from '@googlemaps/react-wrapper';
+import { Wrapper } from "@googlemaps/react-wrapper";
 
 const MyApp = () => (
-	<Wrapper apiKey={'YOUR_API_KEY'}>
-		<MyMapComponent />
-	</Wrapper>
+  <Wrapper apiKey={"YOUR_API_KEY"}>
+    <MyMapComponent />
+  </Wrapper>
 );
 ```
 
 The preceding example will not render any elements unless the Google Maps JavaScript API is successfullly loaded. To handle error cases and the time until load is complete, it is recommended to provide render props.
 
 ```javascript
-import { Wrapper, Status } from '@googlemaps/react-wrapper';
+import { Wrapper, Status } from "@googlemaps/react-wrapper";
 
-const render = (status: Status): ReactElement => {
+const render = (status) => {
   switch (status) {
     case status === Status.LOADING:
-      return <Spinner/>;
+      return <Spinner />;
     case status === Status.FAILURE:
-      return <ErrorComponent/>;
+      return <ErrorComponent />;
     case status === Status.SUCCESS:
-      return <MyMapComponent/>;
+      return <MyMapComponent />;
   }
+};
 
-}
-
-const MyApp = () => (
-	<Wrapper apiKey={'YOUR_API_KEY'} render={render} />
-);
+const MyApp = () => <Wrapper apiKey={"YOUR_API_KEY"} render={render} />;
 ```
 
 When combining children and render props, the children will render on success and the render prop will be executed for other status values.
 
 ```javascript
-import { Wrapper, Status } from '@googlemaps/react-wrapper';
+import { Wrapper, Status } from "@googlemaps/react-wrapper";
 
 const render = (status: Status): ReactElement => {
-  if (status === Status.LOADING) return <Spinner/>;
-  if (status === Status.FAILURE) return <ErrorComponent/>;
+  if (status === Status.LOADING) return <Spinner />;
+  if (status === Status.FAILURE) return <ErrorComponent />;
   return null;
-}
+};
 
 const MyApp = () => (
-	<Wrapper apiKey={'YOUR_API_KEY'} render={render} >
+  <Wrapper apiKey={"YOUR_API_KEY"} render={render}>
     <MyMapComponent />
-	</Wrapper>
+  </Wrapper>
 );
 ```
 
