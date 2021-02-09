@@ -1,0 +1,27 @@
+{
+	"plugins": ["jest", "@typescript-eslint"],
+	"extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:@typescript-eslint/recommended-requiring-type-checking"
+	],
+
+	"parserOptions": {
+		"ecmaVersion": 9,
+		"sourceType": "module",
+		"project": "./tsconfig.json"
+	},
+	"env": {
+		"browser": true,
+		"es6": true,
+		"jest/globals": true
+  }, 
+  "settings": {
+    "react": {
+
+      "version": "detect"
+    }
+  }
+}

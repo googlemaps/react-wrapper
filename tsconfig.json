@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "./dist",
+    "noImplicitAny": true,
+    "outDir": "./dist",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "lib": ["DOM", "ESNext"],
+    "target": "ES5",
+    "moduleResolution": "node",
+    "rootDir": "src",
+    "jsx": "react"
+  },
+  "include": ["src/**/*.ts", "src/index.tsx", "src/index.test.tsx"]
+}
