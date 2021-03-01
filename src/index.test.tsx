@@ -14,6 +14,11 @@
 //  * limitations under the License.
 //  */
 
+/* eslint @typescript-eslint/no-unsafe-member-access: 0 */
+/* eslint @typescript-eslint/no-unsafe-assignment: 0 */
+/* eslint @typescript-eslint/no-unsafe-call: 0 */
+/* eslint @typescript-eslint/no-unsafe-return: 0 */
+
 import React, { ReactElement } from "react";
 import { Wrapper, Status } from "./index";
 import { Loader, LoaderOptions } from "@googlemaps/js-api-loader";
