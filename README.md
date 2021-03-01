@@ -1,10 +1,10 @@
 # Google Maps JavaScript API React Wrapper
 
-[![npm](https://img.shields.io/npm/v/@googlemaps/react-wrapper)](https://www.npmjs.com/package/@googlemaps/js-react-wrapper)
-![Build](https://github.com/googlemaps/js-react-wrapper/workflows/Build/badge.svg)
-![Release](https://github.com/googlemaps/js-react-wrapper/workflows/Release/badge.svg)
-[![codecov](https://codecov.io/gh/googlemaps/js-react-wrapper/branch/master/graph/badge.svg)](https://codecov.io/gh/googlemaps/js-react-wrapper)
-![GitHub contributors](https://img.shields.io/github/contributors/googlemaps/js-react-wrapper?color=green)
+[![npm](https://img.shields.io/npm/v/@googlemaps/react-wrapper)](https://www.npmjs.com/package/@googlemaps/react-wrapper)
+![Build](https://github.com/googlemaps/react-wrapper/workflows/Build/badge.svg)
+![Release](https://github.com/googlemaps/react-wrapper/workflows/Release/badge.svg)
+[![codecov](https://codecov.io/gh/googlemaps/react-wrapper/branch/master/graph/badge.svg)](https://codecov.io/gh/googlemaps/react-wrapper)
+![GitHub contributors](https://img.shields.io/github/contributors/googlemaps/react-wrapper?color=green)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 ## Description
@@ -71,7 +71,7 @@ or
 
 ## Documentation
 
-The reference documentation can be found at this [link](https://googlemaps.github.io/js-react-wrapper/index.html).
+The reference documentation can be found at this [link](https://googlemaps.github.io/react-wrapper/index.html).
 
 
 ## Support
@@ -82,6 +82,6 @@ the library that we want you to build real production applications on it.
 If you find a bug, or have a feature suggestion, please [log an issue][issues]. If you'd like to
 contribute, please read [How to Contribute][contrib].
 
-[issues]: https://github.com/googlemaps/js-react-wrapper/issues
-[contrib]: https://github.com/googlemaps/js-react-wrapper/blob/master/CONTRIBUTING.md
+[issues]: https://github.com/googlemaps/react-wrapper/issues
+[contrib]: https://github.com/googlemaps/react-wrapper/blob/master/CONTRIBUTING.md
 [js_api_loader]: https://www.npmjs.com/package/@googlemaps/js-api-loader
