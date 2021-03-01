@@ -7,7 +7,7 @@
     "sourceMap": true,
     "esModuleInterop": true,
     "lib": ["DOM", "ESNext"],
-    "target": "ES5",
+    "target": "ESNext",
     "moduleResolution": "node",
     "rootDir": "src",
     "jsx": "react"
