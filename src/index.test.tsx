@@ -138,3 +138,23 @@ test("it should pass props to Loader and use the correct script url", () => {
   // compare url to what is generated directly from loader
   expect(script.src).toBe(new Loader(loaderOptions).createUrl());
 });
+
+test("it should execute the callback", async () => {
+  const callback = jest.fn();
+  const loaderOptions: LoaderOptions = {
+    apiKey: "YOUR_API_KEY",
+  };
+
+  render(<Wrapper {...{...loaderOptions, callback}} />);
+
+  expect(callback.mock.calls[0][0]).toBe(Status.LOADING)
+  expect(callback.mock.calls[0][1]).toBeInstanceOf(Loader)
+
+  await executeLoaderCallback();
+
+  expect(callback.mock.calls[1][0]).toBe(Status.SUCCESS)
+  expect(callback.mock.calls[1][1]).toBeInstanceOf(Loader)
+
+  expect(callback).toBeCalledTimes(2)
+
+});
