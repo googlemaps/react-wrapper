@@ -32,6 +32,12 @@ export interface WrapperProps extends LoaderOptions {
    * Render prop used to switch on the status.
    */
   render?: (status: Status) => ReactElement;
+  /**
+   * Callback prop used to access `@googlemaps/js-api-loader` and `Status`.
+   *
+   * Note: The callback be executed multiple times in the lifecycle of the component.
+   */
+  callback?: (status: Status, loader: Loader) => void;
 }
 
 /**
@@ -52,15 +58,26 @@ export interface WrapperProps extends LoaderOptions {
 export const Wrapper = ({
   children,
   render,
+  callback,
   ...options
 }: WrapperProps): ReactElement => {
   const [status, setStatus] = useState(Status.LOADING);
 
   useEffect(() => {
-    new Loader(options).load().then(
-      () => setStatus(Status.SUCCESS),
-      () => setStatus(Status.FAILURE)
+    const loader = new Loader(options);
+
+    const setStatusAndExecuteCallback = (status: Status) => {
+      if (callback) callback(status, loader);
+      setStatus(status);
+    };
+
+    setStatusAndExecuteCallback(Status.LOADING);
+
+    loader.load().then(
+      () => setStatusAndExecuteCallback(Status.SUCCESS),
+      () => setStatusAndExecuteCallback(Status.FAILURE)
     );
+
   }, []);
 
   if (status === Status.SUCCESS && children) return <>{children}</>;
