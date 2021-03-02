@@ -37,10 +37,17 @@ var Status;
  *
  * @param props
  */
-const Wrapper = ({ children, render, ...options }) => {
+const Wrapper = ({ children, render, callback, ...options }) => {
     const [status, setStatus] = useState(Status.LOADING);
     useEffect(() => {
-        new Loader(options).load().then(() => setStatus(Status.SUCCESS), () => setStatus(Status.FAILURE));
+        const loader = new Loader(options);
+        const setStatusAndExecuteCallback = (status) => {
+            if (callback)
+                callback(status, loader);
+            setStatus(status);
+        };
+        setStatusAndExecuteCallback(Status.LOADING);
+        loader.load().then(() => setStatusAndExecuteCallback(Status.SUCCESS), () => setStatusAndExecuteCallback(Status.FAILURE));
     }, []);
     if (status === Status.SUCCESS && children)
         return React.createElement(React.Fragment, null, children);

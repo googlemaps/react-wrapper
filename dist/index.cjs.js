@@ -45,10 +45,17 @@ exports.Status = void 0;
  *
  * @param props
  */
-const Wrapper = ({ children, render, ...options }) => {
+const Wrapper = ({ children, render, callback, ...options }) => {
     const [status, setStatus] = React.useState(exports.Status.LOADING);
     React.useEffect(() => {
-        new jsApiLoader.Loader(options).load().then(() => setStatus(exports.Status.SUCCESS), () => setStatus(exports.Status.FAILURE));
+        const loader = new jsApiLoader.Loader(options);
+        const setStatusAndExecuteCallback = (status) => {
+            if (callback)
+                callback(status, loader);
+            setStatus(status);
+        };
+        setStatusAndExecuteCallback(exports.Status.LOADING);
+        loader.load().then(() => setStatusAndExecuteCallback(exports.Status.SUCCESS), () => setStatusAndExecuteCallback(exports.Status.FAILURE));
     }, []);
     if (status === exports.Status.SUCCESS && children)
         return React__default['default'].createElement(React__default['default'].Fragment, null, children);

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import { ReactNode, ReactElement } from "react";
-import { LoaderOptions } from "@googlemaps/js-api-loader";
+import { Loader, LoaderOptions } from "@googlemaps/js-api-loader";
 export declare enum Status {
     LOADING = "LOADING",
     FAILURE = "FAILURE",
@@ -29,6 +29,12 @@ export interface WrapperProps extends LoaderOptions {
      * Render prop used to switch on the status.
      */
     render?: (status: Status) => ReactElement;
+    /**
+     * Callback prop used to access `@googlemaps/js-api-loader` and `Status`.
+     *
+     * Note: The callback be executed multiple times in the lifecycle of the component.
+     */
+    callback?: (status: Status, loader: Loader) => void;
 }
 /**
  * A component to wrap the loading of the Google Maps JavaScript API.
@@ -45,4 +51,4 @@ export interface WrapperProps extends LoaderOptions {
  *
  * @param props
  */
-export declare const Wrapper: ({ children, render, ...options }: WrapperProps) => ReactElement;
+export declare const Wrapper: ({ children, render, callback, ...options }: WrapperProps) => ReactElement;
