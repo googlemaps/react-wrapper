@@ -1,6 +1,3 @@
-import React, { useState, useEffect } from 'react';
-import { Loader } from '@googlemaps/js-api-loader';
-
 /**
  * Copyright 2021 Google LLC. All Rights Reserved.
  *
@@ -16,12 +13,23 @@ import { Loader } from '@googlemaps/js-api-loader';
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-var Status;
-(function (Status) {
-    Status["LOADING"] = "LOADING";
-    Status["FAILURE"] = "FAILURE";
-    Status["SUCCESS"] = "SUCCESS";
-})(Status || (Status = {}));
+import { ReactNode, ReactElement } from "react";
+import { LoaderOptions } from "@googlemaps/js-api-loader";
+export declare enum Status {
+    LOADING = "LOADING",
+    FAILURE = "FAILURE",
+    SUCCESS = "SUCCESS"
+}
+export interface WrapperProps extends LoaderOptions {
+    /**
+     * Children wrapped by the `<Wrapper>{elements}</Wrapper`.
+     */
+    children?: ReactNode;
+    /**
+     * Render prop used to switch on the status.
+     */
+    render?: (status: Status) => ReactElement;
+}
 /**
  * A component to wrap the loading of the Google Maps JavaScript API.
  *
@@ -37,17 +45,4 @@ var Status;
  *
  * @param props
  */
-const Wrapper = ({ children, render, ...options }) => {
-    const [status, setStatus] = useState(Status.LOADING);
-    useEffect(() => {
-        new Loader(options).load().then(() => setStatus(Status.SUCCESS), () => setStatus(Status.FAILURE));
-    }, []);
-    if (status === Status.SUCCESS && children)
-        return React.createElement(React.Fragment, null, children);
-    if (render)
-        return render(status);
-    return React.createElement(React.Fragment, null);
-};
-
-export { Status, Wrapper };
-//# sourceMappingURL=index.esm.js.map
+export declare const Wrapper: ({ children, render, ...options }: WrapperProps) => ReactElement;
