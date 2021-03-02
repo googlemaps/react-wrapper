@@ -15,7 +15,7 @@
  */
 import commonjs from "@rollup/plugin-commonjs";
 import filesize from "rollup-plugin-filesize";
-import typescript from "@rollup/plugin-typescript";
+import typescript from "rollup-plugin-typescript2";
 import resolve from "@rollup/plugin-node-resolve";
 
 import pkg from "./package.json";
