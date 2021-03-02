@@ -1,6 +1,6 @@
 {
   "name": "@googlemaps/react-wrapper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React component that wraps the loading of Google Maps JavaScript API.",
   "keywords": [
     "google",
