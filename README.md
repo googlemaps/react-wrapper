@@ -9,9 +9,10 @@
 [![](https://github.com/jpoehnelt/in-solidarity-bot/raw/main/static//badge-flat-square.png)](https://github.com/apps/in-solidarity)
 
 ## Description
+
 Wrap React components with this libary to load the Google Maps JavaScript API.
 
-``` javascript
+```javascript
 import { Wrapper } from "@googlemaps/react-wrapper";
 
 const MyApp = () => (
@@ -64,11 +65,15 @@ This wrapper uses [@googlemaps/js-api-loader][js_api_loader] to load the Google 
 
 Available via npm as the package [@googlemaps/react-wrapper](https://www.npmjs.com/package/@googlemaps/react-wrapper).
 
-`npm i @googlemaps/react-wrapper`
+```sh
+npm i @googlemaps/react-wrapper
+```
 
 or
 
-`yarn add @googlemaps/react-wrapper`
+```sh
+yarn add @googlemaps/react-wrapper
+```
 
 ## Documentation
 
