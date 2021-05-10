@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^18.0.0",
-    "@rollup/plugin-node-resolve": "^11.2.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
     "@testing-library/dom": "^7.29.6",
     "@testing-library/react": "^11.2.5",
     "@types/jest": "^26.0.20",
