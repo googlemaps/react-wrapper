@@ -34,7 +34,7 @@
     "test:e2e": "jest e2e/*"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
     "@testing-library/dom": "^8.0.0",
     "@testing-library/react": "^12.0.0",
