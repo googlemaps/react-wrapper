@@ -111,7 +111,33 @@
 <span style="color: #000000">  </span><span style="color: #800000">&lt;/</span><span style="color: #267F99">Wrapper</span><span style="color: #800000">&gt;</span>
 <span style="color: #000000">);</span>
 </code></pre>
+				<a href="#googlemapsjs-api-loader" id="googlemapsjs-api-loader" style="color: inherit; text-decoration: none;">
+					<h3>@googlemaps/js-api-loader</h3>
+				</a>
 				<p>This wrapper uses <a href="https://www.npmjs.com/package/@googlemaps/js-api-loader">@googlemaps/js-api-loader</a> to load the Google Maps JavaScript API. This library uses a singleton pattern and will not attempt to load the library more than once. All options accepted by <a href="https://www.npmjs.com/package/@googlemaps/js-api-loader">@googlemaps/js-api-loader</a> are also accepted as props to the wrapper component.</p>
+				<a href="#mymapcomponent" id="mymapcomponent" style="color: inherit; text-decoration: none;">
+					<h3>MyMapComponent</h3>
+				</a>
+				<p>See the <a href="https://github.com/googlemaps/react-wrapper/tree/main/examples">examples</a> folder for additional usage patterns and an example of using the <code>useRef</code> and <code>useEffect</code> hooks with Google Maps. The following snippets demonstrates this usage.</p>
+				<pre><code class="language-javascript"><span style="color: #0000FF">function</span><span style="color: #000000"> </span><span style="color: #795E26">MyMapComponent</span><span style="color: #000000">({</span>
+<span style="color: #000000">  </span><span style="color: #001080">center</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">zoom</span><span style="color: #000000">,</span>
+<span style="color: #000000">}: {</span>
+<span style="color: #000000">  </span><span style="color: #001080">center</span><span style="color: #000000">: </span><span style="color: #267F99">google</span><span style="color: #000000">.</span><span style="color: #267F99">maps</span><span style="color: #000000">.</span><span style="color: #267F99">LatLngLiteral</span><span style="color: #000000">;</span>
+<span style="color: #000000">  </span><span style="color: #001080">zoom</span><span style="color: #000000">: </span><span style="color: #267F99">number</span><span style="color: #000000">;</span>
+<span style="color: #000000">}) {</span>
+<span style="color: #000000">  </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">ref</span><span style="color: #000000"> = </span><span style="color: #795E26">useRef</span><span style="color: #000000">();</span>
+
+<span style="color: #000000">  </span><span style="color: #795E26">useEffect</span><span style="color: #000000">(() </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #001080">window</span><span style="color: #000000">.</span><span style="color: #001080">google</span><span style="color: #000000">.</span><span style="color: #001080">maps</span><span style="color: #000000">.</span><span style="color: #795E26">Map</span><span style="color: #000000">(</span><span style="color: #001080">ref</span><span style="color: #000000">.</span><span style="color: #001080">current</span><span style="color: #000000">, {</span>
+<span style="color: #000000">      </span><span style="color: #001080">center</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">zoom</span><span style="color: #000000">,</span>
+<span style="color: #000000">    });</span>
+<span style="color: #000000">  });</span>
+
+<span style="color: #000000">  </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #800000">&lt;div</span><span style="color: #000000"> </span><span style="color: #FF0000">ref</span><span style="color: #000000">=</span><span style="color: #0000FF">{</span><span style="color: #001080">ref</span><span style="color: #0000FF">}</span><span style="color: #000000"> </span><span style="color: #FF0000">id</span><span style="color: #000000">=</span><span style="color: #A31515">&quot;map&quot;</span><span style="color: #000000"> </span><span style="color: #800000">/&gt;</span><span style="color: #000000">;</span>
+<span style="color: #000000">}</span>
+</code></pre>
 				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
 					<h2>Install</h2>
 				</a>
