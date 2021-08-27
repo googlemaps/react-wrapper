@@ -59,8 +59,33 @@ const MyApp = () => (
 );
 ```
 
-This wrapper uses [@googlemaps/js-api-loader][js_api_loader] to load the Google Maps JavaScript API. This library uses a singleton pattern and will not attempt to load the library more than once. All options accepted by [@googlemaps/js-api-loader][js_api_loader] are also accepted as props to the wrapper component.
+### @googlemaps/js-api-loader
 
+This wrapper uses [@googlemaps/js-api-loader][js_api_loader] to load the Google Maps JavaScript API. This library uses a singleton pattern and will not attempt to load the library more than once. All options accepted by [@googlemaps/js-api-loader][js_api_loader] are also accepted as props to the wrapper component.
+### MyMapComponent
+
+See the [examples](https://github.com/googlemaps/react-wrapper/tree/main/examples) folder for additional usage patterns and an example of using the `useRef` and `useEffect` hooks with Google Maps. The following snippets demonstrates this usage.
+
+```javascript
+function MyMapComponent({
+  center,
+  zoom,
+}: {
+  center: google.maps.LatLngLiteral;
+  zoom: number;
+}) {
+  const ref = useRef();
+
+  useEffect(() => {
+    new window.google.maps.Map(ref.current, {
+      center,
+      zoom,
+    });
+  });
+
+  return <div ref={ref} id="map" />;
+}
+```
 ## Install
 
 Available via npm as the package [@googlemaps/react-wrapper](https://www.npmjs.com/package/@googlemaps/react-wrapper).

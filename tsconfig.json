@@ -9,8 +9,7 @@
     "lib": ["DOM", "ESNext"],
     "target": "ESNext",
     "moduleResolution": "node",
-    "rootDir": "src",
     "jsx": "react"
   },
-  "include": ["src/**/*.ts", "src/index.tsx", "src/index.test.tsx"]
+  "include": ["src/**/*.ts", "src/index.tsx", "src/index.test.tsx", "examples/**/*.tsx"]
 }
