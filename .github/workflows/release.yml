@@ -38,10 +38,12 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_WOMBAT_TOKEN }}
-      - run: |        
+      - run: |
           npm i
+          npm run build
           npm run docs
           cp -r dist docs/dist
+          cp -r public docs/public
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
