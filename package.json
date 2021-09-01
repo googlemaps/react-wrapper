@@ -19,9 +19,8 @@
   "author": "Justin Poehnelt",
   "main": "dist/index.cjs.js",
   "browser": "dist/index.umd.js",
-  "unpkg": "dist/index.min.js",
   "module": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/src/index.d.ts",
   "files": [
     "dist/*"
   ],
