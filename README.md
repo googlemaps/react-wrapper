@@ -12,7 +12,7 @@
 
 Wrap React components with this libary to load the Google Maps JavaScript API.
 
-```javascript
+```jsx
 import { Wrapper } from "@googlemaps/react-wrapper";
 
 const MyApp = () => (
@@ -22,9 +22,9 @@ const MyApp = () => (
 );
 ```
 
-The preceding example will not render any elements unless the Google Maps JavaScript API is successfullly loaded. To handle error cases and the time until load is complete, it is recommended to provide render props.
+The preceding example will not render any elements unless the Google Maps JavaScript API is successfully loaded. To handle error cases and the time until load is complete, it is recommended to provide render props.
 
-```javascript
+```jsx
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 
 const render = (status) => {
@@ -43,7 +43,7 @@ const MyApp = () => <Wrapper apiKey={"YOUR_API_KEY"} render={render} />;
 
 When combining children and render props, the children will render on success and the render prop will be executed for other status values.
 
-```javascript
+```tsx
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 
 const render = (status: Status): ReactElement => {
@@ -66,7 +66,7 @@ This wrapper uses [@googlemaps/js-api-loader][js_api_loader] to load the Google 
 
 The following snippets demonstrates the usage of `useRef` and `useEffect` hooks with Google Maps.
 
-```javascript
+```tsx
 function MyMapComponent({
   center,
   zoom,
