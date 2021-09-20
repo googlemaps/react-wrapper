@@ -145,16 +145,15 @@ test("it should execute the callback", async () => {
     apiKey: "YOUR_API_KEY",
   };
 
-  render(<Wrapper {...{...loaderOptions, callback}} />);
+  render(<Wrapper {...{ ...loaderOptions, callback }} />);
 
-  expect(callback.mock.calls[0][0]).toBe(Status.LOADING)
-  expect(callback.mock.calls[0][1]).toBeInstanceOf(Loader)
+  expect(callback.mock.calls[0][0]).toBe(Status.LOADING);
+  expect(callback.mock.calls[0][1]).toBeInstanceOf(Loader);
 
   await executeLoaderCallback();
 
-  expect(callback.mock.calls[1][0]).toBe(Status.SUCCESS)
-  expect(callback.mock.calls[1][1]).toBeInstanceOf(Loader)
+  expect(callback.mock.calls[1][0]).toBe(Status.SUCCESS);
+  expect(callback.mock.calls[1][1]).toBeInstanceOf(Loader);
 
-  expect(callback).toBeCalledTimes(2)
-
+  expect(callback).toBeCalledTimes(2);
 });
