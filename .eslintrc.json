@@ -1,27 +1,27 @@
 {
-	"plugins": ["jest", "@typescript-eslint"],
-	"extends": [
+  "extends": [
     "eslint:recommended",
-    "plugin:react/recommended",
-		"plugin:@typescript-eslint/eslint-recommended",
-		"plugin:@typescript-eslint/recommended",
-		"plugin:@typescript-eslint/recommended-requiring-type-checking"
-	],
-
-	"parserOptions": {
-		"ecmaVersion": 9,
-		"sourceType": "module",
-		"project": "./tsconfig.json"
-	},
-	"env": {
-		"browser": true,
-		"es6": true,
-		"jest/globals": true
-  }, 
-  "settings": {
-    "react": {
-
-      "version": "detect"
-    }
-  }
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 11,
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "jest"],
+  "rules": {
+    "no-var": 2,
+    "prefer-arrow-callback": 2,
+    "@typescript-eslint/ban-ts-comment": 0,
+    "@typescript-eslint/ban-types": 1,
+    "@typescript-eslint/no-empty-function": 1
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true,
+    "jest/globals": true
+  },
+  "globals": { "google": "readonly" }
 }
