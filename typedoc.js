@@ -24,5 +24,4 @@ module.exports = {
   ],
   name: "@googlemaps/react-wrapper",
   excludePrivate: true,
-  toc: ["Wrapper", "Status", "WrapperProps"],
 };
