@@ -77,7 +77,6 @@ export const Wrapper = ({
       () => setStatusAndExecuteCallback(Status.SUCCESS),
       () => setStatusAndExecuteCallback(Status.FAILURE)
     );
-
   }, []);
 
   if (status === Status.SUCCESS && children) return <>{children}</>;

@@ -11,5 +11,10 @@
     "moduleResolution": "node",
     "jsx": "react"
   },
-  "include": ["src/**/*.ts", "src/index.tsx", "src/index.test.tsx", "examples/**/*.tsx"]
+  "include": [
+    "src/**/*.ts",
+    "src/index.tsx",
+    "src/index.test.tsx",
+    "examples/**/*.tsx"
+  ]
 }
