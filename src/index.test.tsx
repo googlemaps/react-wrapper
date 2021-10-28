@@ -19,11 +19,11 @@
 /* eslint @typescript-eslint/no-unsafe-call: 0 */
 /* eslint @typescript-eslint/no-unsafe-return: 0 */
 
-import React, { ReactElement } from "react";
-import { Wrapper, Status } from "./index";
-import { Loader, LoaderOptions } from "@googlemaps/js-api-loader";
-import { render, act } from "@testing-library/react";
-import { waitFor } from "@testing-library/dom";
+import React, {ReactElement} from 'react';
+import {Wrapper, Status} from './index';
+import {Loader, LoaderOptions} from '@googlemaps/js-api-loader';
+import {render, act} from '@testing-library/react';
+import {waitFor} from '@testing-library/dom';
 
 /**
  * Helper to resolve/reject the Loader promise.
@@ -33,7 +33,7 @@ import { waitFor } from "@testing-library/dom";
  */
 const executeLoaderCallback = async (e?: string | Error): Promise<void> => {
   await act(async () => {
-    const loader = Loader["instance"];
+    const loader = Loader['instance'];
 
     if (e) {
       loader.onerrorEvent = e;
@@ -46,53 +46,53 @@ const executeLoaderCallback = async (e?: string | Error): Promise<void> => {
   });
 };
 
-const child = "foo";
+const child = 'foo';
 const renderProp = (status: Status): ReactElement => <>{status}</>;
 
 afterEach(() => {
-  document.getElementsByTagName("html")[0].innerHTML = "";
-  delete Loader["instance"];
+  document.getElementsByTagName('html')[0].innerHTML = '';
+  delete Loader['instance'];
 });
 
-test("it should render children after load", async () => {
-  const { container } = render(
-    <Wrapper apiKey={"YOUR_API_KEY"}>{child}</Wrapper>
+test('it should render children after load', async () => {
+  const {container} = render(
+    <Wrapper apiKey={'YOUR_API_KEY'}>{child}</Wrapper>
   );
-  expect(container.innerHTML).toBe("");
+  expect(container.innerHTML).toBe('');
   await executeLoaderCallback();
   expect(container.innerHTML).toBe(child);
 });
 
-test("it should not render children after error", async () => {
-  const { container } = render(
-    <Wrapper apiKey={"YOUR_API_KEY"}>{child}</Wrapper>
+test('it should not render children after error', async () => {
+  const {container} = render(
+    <Wrapper apiKey={'YOUR_API_KEY'}>{child}</Wrapper>
   );
-  expect(container.innerHTML).toBe("");
-  await executeLoaderCallback("some error");
-  expect(container.innerHTML).toBe("");
+  expect(container.innerHTML).toBe('');
+  await executeLoaderCallback('some error');
+  expect(container.innerHTML).toBe('');
 });
 
-test("it should use render prop success", async () => {
-  const { container } = render(
-    <Wrapper apiKey={"YOUR_API_KEY"} render={renderProp}></Wrapper>
+test('it should use render prop success', async () => {
+  const {container} = render(
+    <Wrapper apiKey={'YOUR_API_KEY'} render={renderProp}></Wrapper>
   );
   expect(container.innerHTML).toBe(Status.LOADING);
   await executeLoaderCallback();
   expect(container.innerHTML).toBe(Status.SUCCESS);
 });
 
-test("it should use render prop failure", async () => {
-  const { container } = render(
-    <Wrapper apiKey={"YOUR_API_KEY"} render={renderProp}></Wrapper>
+test('it should use render prop failure', async () => {
+  const {container} = render(
+    <Wrapper apiKey={'YOUR_API_KEY'} render={renderProp}></Wrapper>
   );
   expect(container.innerHTML).toBe(Status.LOADING);
-  await executeLoaderCallback("some error");
+  await executeLoaderCallback('some error');
   expect(container.innerHTML).toBe(Status.FAILURE);
 });
 
-test("it should use children if success and render prop", async () => {
-  const { container } = render(
-    <Wrapper apiKey={"YOUR_API_KEY"} render={renderProp}>
+test('it should use children if success and render prop', async () => {
+  const {container} = render(
+    <Wrapper apiKey={'YOUR_API_KEY'} render={renderProp}>
       {child}
     </Wrapper>
   );
@@ -101,17 +101,17 @@ test("it should use children if success and render prop", async () => {
   expect(container.innerHTML).toBe(child);
 });
 
-test("it should render multiple wrapper elements", async () => {
-  const load = jest.spyOn(Loader.prototype, "load");
+test('it should render multiple wrapper elements', async () => {
+  const load = jest.spyOn(Loader.prototype, 'load');
   // eslint-disable-next-line
-  const setScript = jest.spyOn<Loader, any>(Loader.prototype, "setScript");
+  const setScript = jest.spyOn<Loader, any>(Loader.prototype, 'setScript');
 
-  const { container } = render(
+  const {container} = render(
     <>
-      <Wrapper apiKey={"YOUR_API_KEY"} render={renderProp}>
+      <Wrapper apiKey={'YOUR_API_KEY'} render={renderProp}>
         {child}
       </Wrapper>
-      <Wrapper apiKey={"YOUR_API_KEY"} render={renderProp}>
+      <Wrapper apiKey={'YOUR_API_KEY'} render={renderProp}>
         {child}
       </Wrapper>
     </>
@@ -124,28 +124,28 @@ test("it should render multiple wrapper elements", async () => {
   expect(setScript).toHaveBeenCalledTimes(1);
 });
 
-test("it should pass props to Loader and use the correct script url", () => {
+test('it should pass props to Loader and use the correct script url', () => {
   const loaderOptions: LoaderOptions = {
-    apiKey: "YOUR_API_KEY",
-    libraries: ["places"],
+    apiKey: 'YOUR_API_KEY',
+    libraries: ['places'],
   };
 
   render(<Wrapper {...loaderOptions} />);
 
   // grab the script from the document
-  const script = document.getElementsByTagName("script")[0];
+  const script = document.getElementsByTagName('script')[0];
 
   // compare url to what is generated directly from loader
   expect(script.src).toBe(new Loader(loaderOptions).createUrl());
 });
 
-test("it should execute the callback", async () => {
+test('it should execute the callback', async () => {
   const callback = jest.fn();
   const loaderOptions: LoaderOptions = {
-    apiKey: "YOUR_API_KEY",
+    apiKey: 'YOUR_API_KEY',
   };
 
-  render(<Wrapper {...{ ...loaderOptions, callback }} />);
+  render(<Wrapper {...{...loaderOptions, callback}} />);
 
   expect(callback.mock.calls[0][0]).toBe(Status.LOADING);
   expect(callback.mock.calls[0][1]).toBeInstanceOf(Loader);

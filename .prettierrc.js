@@ -1,5 +1,5 @@
 /**
- * Copyright 2020 Google LLC
+ * Copyright 2021 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,5 @@
  */
 
 module.exports = {
-  out: 'docs',
-  exclude: [
-    '**/node_modules/**',
-    '**/*.spec.ts',
-    '**/*.test.ts',
-    '**/*.test.tsx',
-  ],
-  name: '@googlemaps/react-wrapper',
-  excludePrivate: true,
+  ...require("gts/.prettierrc.json"),
 };
