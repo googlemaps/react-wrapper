@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-import React, { useEffect, ReactNode, useState, ReactElement } from "react";
-import { Loader, LoaderOptions } from "@googlemaps/js-api-loader";
+import React, {useEffect, ReactNode, useState, ReactElement} from 'react';
+import {Loader, LoaderOptions} from '@googlemaps/js-api-loader';
 
 export enum Status {
-  LOADING = "LOADING",
-  FAILURE = "FAILURE",
-  SUCCESS = "SUCCESS",
+  LOADING = 'LOADING',
+  FAILURE = 'FAILURE',
+  SUCCESS = 'SUCCESS',
 }
 
 export interface WrapperProps extends LoaderOptions {

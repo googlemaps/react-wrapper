@@ -13,18 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import commonjs from "@rollup/plugin-commonjs";
-import filesize from "rollup-plugin-filesize";
-import typescript from "rollup-plugin-typescript2";
-import resolve from "@rollup/plugin-node-resolve";
+import commonjs from '@rollup/plugin-commonjs';
+import filesize from 'rollup-plugin-filesize';
+import typescript from 'rollup-plugin-typescript2';
+import resolve from '@rollup/plugin-node-resolve';
 
-import pkg from "./package.json";
+import pkg from './package.json';
 
-const INPUT_FILE_PATH = "src/index.tsx";
-const OUTPUT_NAME = "Loader";
+const INPUT_FILE_PATH = 'src/index.tsx';
+const OUTPUT_NAME = 'Loader';
 
 const GLOBALS = {
-  react: "React",
+  react: 'React',
 };
 
 const PLUGINS = [
@@ -37,24 +37,24 @@ const PLUGINS = [
   filesize(),
 ];
 
-const EXTERNAL = ["react", "@googlemaps/js-api-loader"];
+const EXTERNAL = ['react', '@googlemaps/js-api-loader'];
 
 const OUTPUT_DATA = [
   {
     file: pkg.browser,
-    format: "umd",
+    format: 'umd',
   },
   {
     file: pkg.main,
-    format: "cjs",
+    format: 'cjs',
   },
   {
     file: pkg.module,
-    format: "es",
+    format: 'es',
   },
 ];
 
-const config = OUTPUT_DATA.map(({ file, format }) => ({
+const config = OUTPUT_DATA.map(({file, format}) => ({
   input: INPUT_FILE_PATH,
   output: {
     file,

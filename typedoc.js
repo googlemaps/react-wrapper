@@ -15,13 +15,13 @@
  */
 
 module.exports = {
-  out: "docs",
+  out: 'docs',
   exclude: [
-    "**/node_modules/**",
-    "**/*.spec.ts",
-    "**/*.test.ts",
-    "**/*.test.tsx",
+    '**/node_modules/**',
+    '**/*.spec.ts',
+    '**/*.test.ts',
+    '**/*.test.tsx',
   ],
-  name: "@googlemaps/react-wrapper",
+  name: '@googlemaps/react-wrapper',
   excludePrivate: true,
 };

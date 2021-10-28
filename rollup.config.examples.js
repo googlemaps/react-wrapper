@@ -14,36 +14,36 @@
  * limitations under the License.
  */
 
-import html, { makeHtmlAttributes } from "@rollup/plugin-html";
-import babel from "@rollup/plugin-babel";
-import commonjs from "@rollup/plugin-commonjs";
-import typescript from "rollup-plugin-typescript2";
-import fs from "fs";
-import { nodeResolve } from "@rollup/plugin-node-resolve";
-import path from "path";
-import replace from "@rollup/plugin-replace";
+import html, {makeHtmlAttributes} from '@rollup/plugin-html';
+import babel from '@rollup/plugin-babel';
+import commonjs from '@rollup/plugin-commonjs';
+import typescript from 'rollup-plugin-typescript2';
+import fs from 'fs';
+import {nodeResolve} from '@rollup/plugin-node-resolve';
+import path from 'path';
+import replace from '@rollup/plugin-replace';
 
-const template = ({ attributes, files, meta, publicPath, title }) => {
+const template = ({attributes, files, meta, publicPath, title}) => {
   const scripts = (files.js || [])
-    .map(({ fileName }) => {
+    .map(({fileName}) => {
       const attrs = makeHtmlAttributes(attributes.script);
       return `<script src="${publicPath}${fileName}"${attrs}></script>`;
     })
-    .join("\n");
+    .join('\n');
 
   const links = (files.css || [])
-    .map(({ fileName }) => {
+    .map(({fileName}) => {
       const attrs = makeHtmlAttributes(attributes.link);
       return `<link href="${publicPath}${fileName}" rel="stylesheet"${attrs}>`;
     })
-    .join("\n");
+    .join('\n');
 
   const metas = meta
-    .map((input) => {
+    .map(input => {
       const attrs = makeHtmlAttributes(input);
       return `<meta${attrs}>`;
     })
-    .join("\n");
+    .join('\n');
 
   return `
 <!doctype html>
@@ -69,25 +69,25 @@ const template = ({ attributes, files, meta, publicPath, title }) => {
 
 const typescriptOptions = {
   tsconfigOverride: {
-    compilerOptions: { declaration: false, noEmit: true },
-    include: ["src/**/*", "examples/**/*"],
+    compilerOptions: {declaration: false, noEmit: true},
+    include: ['src/**/*', 'examples/**/*'],
   },
 };
 
 const examples = fs
-  .readdirSync(path.join(__dirname, "examples"))
-  .filter((f) => f !== "config.ts")
-  .map((f) => f.slice(0, f.length - 4));
+  .readdirSync(path.join(__dirname, 'examples'))
+  .filter(f => f !== 'config.ts')
+  .map(f => f.slice(0, f.length - 4));
 
-export default examples.map((name) => ({
+export default examples.map(name => ({
   input: `examples/${name}.tsx`,
   plugins: [
     typescript(typescriptOptions),
     replace({
-      "process.env.NODE_ENV": JSON.stringify("development"),
+      'process.env.NODE_ENV': JSON.stringify('development'),
     }),
     babel({
-      presets: ["@babel/preset-react"],
+      presets: ['@babel/preset-react'],
     }),
     commonjs(),
     nodeResolve(),
@@ -102,9 +102,9 @@ export default examples.map((name) => ({
         template,
       }),
     ],
-    manualChunks: (id) => {
-      if (id.includes("node_modules")) {
-        return "vendor";
+    manualChunks: id => {
+      if (id.includes('node_modules')) {
+        return 'vendor';
       }
     },
   },
