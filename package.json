@@ -18,21 +18,24 @@
   "license": "Apache-2.0",
   "author": "Justin Poehnelt",
   "main": "dist/index.cjs.js",
-  "browser": "dist/index.umd.js",
   "module": "dist/index.esm.js",
+  "browser": "dist/index.umd.js",
   "types": "dist/src/index.d.ts",
   "files": [
     "dist/*"
   ],
   "scripts": {
+    "build": "rm -rf dist && rollup -c && npm run build:examples",
+    "build:examples": "rm -rf public && rollup -c rollup.config.examples.js",
     "docs": "typedoc src/index.tsx",
     "format": "prettier *config.json *.js src/* --write && eslint src/* --fix",
     "lint": "gts check src/*",
     "prepare": "rollup -c",
     "test": "jest -i src/*",
-    "test:e2e": "jest e2e/*",
-    "build": "rm -rf dist && rollup -c && npm run build:examples",
-    "build:examples": "rm -rf public && rollup -c rollup.config.examples.js"
+    "test:e2e": "jest e2e/*"
+  },
+  "dependencies": {
+    "@googlemaps/js-api-loader": "^1.11.1"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.14.5",
@@ -41,6 +44,7 @@
     "@rollup/plugin-html": "^0.2.3",
     "@rollup/plugin-node-resolve": "^13.0.0",
     "@rollup/plugin-replace": "^3.0.0",
+    "@rollup/plugin-typescript": "^8.3.0",
     "@testing-library/dom": "^8.0.0",
     "@testing-library/react": "^12.0.0",
     "@types/google.maps": "^3.45.6",
@@ -57,20 +61,16 @@
     "rollup": "^2.40.0",
     "rollup-plugin-filesize": "^9.0.0",
     "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript2": "^0.31.0",
     "ts-jest": "^26.5.1",
     "tslib": "^2.1.0",
     "typedoc": "^0.22.4",
     "typescript": "^4.1.3"
   },
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://wombat-dressing-room.appspot.com"
-  },
-  "dependencies": {
-    "@googlemaps/js-api-loader": "^1.11.1"
-  },
-  "peerDependencies": {
-    "react": ">=16.8.0"
   }
 }

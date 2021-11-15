@@ -17,7 +17,7 @@
 import html, {makeHtmlAttributes} from '@rollup/plugin-html';
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
-import typescript from 'rollup-plugin-typescript2';
+import typescript from '@rollup/plugin-typescript';
 import fs from 'fs';
 import {nodeResolve} from '@rollup/plugin-node-resolve';
 import path from 'path';
