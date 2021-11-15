@@ -29,11 +29,11 @@ import { Wrapper, Status } from "@googlemaps/react-wrapper";
 
 const render = (status) => {
   switch (status) {
-    case status === Status.LOADING:
+    case Status.LOADING:
       return <Spinner />;
-    case status === Status.FAILURE:
+    case Status.FAILURE:
       return <ErrorComponent />;
-    case status === Status.SUCCESS:
+    case Status.SUCCESS:
       return <MyMapComponent />;
   }
 };
