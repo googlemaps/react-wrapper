@@ -68,10 +68,8 @@ const template = ({attributes, files, meta, publicPath, title}) => {
 };
 
 const typescriptOptions = {
-  tsconfigOverride: {
-    compilerOptions: {declaration: false, noEmit: true},
-    include: ['src/**/*', 'examples/**/*'],
-  },
+  compilerOptions: {declaration: false, noEmit: true},
+  include: ['src/**/*', 'examples/**/*'],
 };
 
 const examples = fs
