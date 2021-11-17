@@ -15,7 +15,7 @@
  */
 import commonjs from '@rollup/plugin-commonjs';
 import filesize from 'rollup-plugin-filesize';
-import typescript from 'rollup-plugin-typescript2';
+import typescript from '@rollup/plugin-typescript';
 import resolve from '@rollup/plugin-node-resolve';
 
 import pkg from './package.json';
@@ -31,7 +31,7 @@ const PLUGINS = [
   typescript(),
   resolve({
     browser: true,
-    resolveOnly: [/^(?!react$)/, /^(?!@googlemaps\/js-api-loaderm$)/],
+    resolveOnly: [/^(?!react$)/],
   }),
   commonjs(),
   filesize(),
