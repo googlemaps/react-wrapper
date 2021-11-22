@@ -16,5 +16,9 @@
     "src/index.tsx",
     "src/index.test.tsx",
     "examples/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "./dist"
   ]
 }
