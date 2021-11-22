@@ -28,7 +28,8 @@ const GLOBALS = {
 };
 
 const PLUGINS = [
-  typescript(),
+  typescript({tsconfig: './tsconfig.json', declarationDir: './'}),
+  ,
   resolve({
     browser: true,
     resolveOnly: [/^(?!react$)/],
