@@ -27,7 +27,7 @@
   "scripts": {
     "build": "rm -rf dist && rollup -c && npm run build:examples",
     "build:examples": "rm -rf public && rollup -c rollup.config.examples.js",
-    "docs": "typedoc src/index.tsx",
+    "docs": "typedoc src/index.tsx && npm run build:examples && cp -r public docs/public",
     "format": "prettier *config.json *.js src/* --write && eslint src/* --fix",
     "lint": "gts check src/*",
     "prepare": "rollup -c",
