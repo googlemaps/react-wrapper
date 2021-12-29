@@ -47,9 +47,8 @@ When combining children and render props, the children will render on success an
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 
 const render = (status: Status): ReactElement => {
-  if (status === Status.LOADING) return <Spinner />;
   if (status === Status.FAILURE) return <ErrorComponent />;
-  return null;
+  return <Spinner />;
 };
 
 const MyApp = () => (
