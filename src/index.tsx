@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import React, {useEffect, ReactNode, useState, ReactElement} from 'react';
 import {Loader, LoaderOptions} from '@googlemaps/js-api-loader';
+import React, {ReactElement, ReactNode, useEffect, useState} from 'react';
 
 export enum Status {
   LOADING = 'LOADING',
@@ -23,6 +23,13 @@ export enum Status {
   SUCCESS = 'SUCCESS',
 }
 
+/**
+ * The `WrapperProps` interface extends the `LoaderOptions` interface from
+ * [@googlemaps/js-api-loader](https://npmjs.com/package/@googlemaps/js-api-loader).
+ * See the reference documentation for
+ * [LoaderOptions](https://googlemaps.github.io/js-api-loader/interfaces/LoaderOptions.html)
+ * for a complete list of all props that are available.
+ */
 export interface WrapperProps extends LoaderOptions {
   /**
    * Children wrapped by the `<Wrapper>{elements}</Wrapper`.
