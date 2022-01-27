@@ -105,6 +105,18 @@ or
 yarn add @googlemaps/react-wrapper
 ```
 
+For TypeScript support additionally install type definitions.
+
+```sh
+npm i -D @types/google.maps
+```
+
+or
+
+```sh
+yarn add -D @types/google.maps
+```
+
 ## Documentation
 
 The reference documentation can be found at this [link](https://googlemaps.github.io/react-wrapper/index.html).
