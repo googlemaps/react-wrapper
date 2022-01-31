@@ -35,7 +35,7 @@
     "test:e2e": "jest e2e/*"
   },
   "dependencies": {
-    "@googlemaps/js-api-loader": "^1.11.1"
+    "@googlemaps/js-api-loader": "^1.13.2"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.14.5",
