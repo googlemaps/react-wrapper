@@ -1,4 +1,4 @@
-import { r as react, R as React, L as Loader, a as ReactDOM } from './vendor-c249694f.js';
+import { r as react, L as Loader, R as React, a as ReactDOM } from './vendor-c249694f.js';
 
 /**
  * Copyright 2021 Google LLC. All Rights Reserved.
