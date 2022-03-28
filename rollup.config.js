@@ -62,7 +62,7 @@ const config = OUTPUT_DATA.map(({file, format}) => ({
     format,
     name: OUTPUT_NAME,
     globals: GLOBALS,
-    sourcemap: true,
+    sourcemap: false, // https://github.com/googlemaps/react-wrapper/issues/340
   },
   external: EXTERNAL,
   plugins: PLUGINS,
