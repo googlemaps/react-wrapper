@@ -51,7 +51,7 @@
     "@types/google.maps": "^3.45.6",
     "@types/jest": "^27.0.1",
     "@types/react": ">=16.8.0",
-    "@types/react-dom": "^17.0.1",
+    "@types/react-dom": "^18.0.0",
     "eslint-plugin-jest": "^26.0.0",
     "eslint-plugin-react": "^7.22.0",
     "gts": "^3.1.0",
