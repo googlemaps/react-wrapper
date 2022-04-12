@@ -8279,36 +8279,38 @@ class Loader {
    */
   constructor({
     apiKey,
+    authReferrerPolicy,
     channel,
     client,
     id = DEFAULT_ID,
-    libraries = [],
     language,
-    region,
-    version,
+    libraries = [],
     mapIds,
     nonce,
+    region,
     retries = 3,
-    url = "https://maps.googleapis.com/maps/api/js"
+    url = "https://maps.googleapis.com/maps/api/js",
+    version
   }) {
     this.CALLBACK = "__googleMapsCallback";
     this.callbacks = [];
     this.done = false;
     this.loading = false;
     this.errors = [];
-    this.version = version;
     this.apiKey = apiKey;
+    this.authReferrerPolicy = authReferrerPolicy;
     this.channel = channel;
     this.client = client;
     this.id = id || DEFAULT_ID; // Do not allow empty string
 
-    this.libraries = libraries;
     this.language = language;
-    this.region = region;
+    this.libraries = libraries;
     this.mapIds = mapIds;
     this.nonce = nonce;
+    this.region = region;
     this.retries = retries;
     this.url = url;
+    this.version = version;
 
     if (Loader.instance) {
       if (!fastDeepEqual(this.options, Loader.instance.options)) {
@@ -8333,7 +8335,8 @@ class Loader {
       region: this.region,
       mapIds: this.mapIds,
       nonce: this.nonce,
-      url: this.url
+      url: this.url,
+      authReferrerPolicy: this.authReferrerPolicy
     };
   }
 
@@ -8397,6 +8400,10 @@ class Loader {
 
     if (this.mapIds) {
       url += `&map_ids=${this.mapIds.join(",")}`;
+    }
+
+    if (this.authReferrerPolicy) {
+      url += `&auth_referrer_policy=${this.authReferrerPolicy}`;
     }
 
     return url;
