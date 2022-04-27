@@ -26,10 +26,19 @@ var react_development = {exports: {}};
 	      __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
 	    }
 
-	    var ReactVersion = '18.0.0-fc46dba67-20220329'; // ATTENTION
-	    // When adding new symbols to this file,
-	    // Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
-	    // The Symbol used to tag the ReactElement-like types.
+	    var ReactVersion = '18.1.0'; // -----------------------------------------------------------------------------
+
+	    var enableScopeAPI = false; // Experimental Create Event Handle API.
+
+	    var enableCacheElement = false;
+	    var enableTransitionTracing = false; // No known bugs, but needs performance testing
+
+	    var enableLegacyHidden = false; // Enables unstable_avoidThisFallback feature in Fiber
+	    // stuff. Intended to enable React core members to more easily debug scheduling
+	    // issues in DEV builds.
+
+	    var enableDebugTracing = false; // Track which Fiber(s) schedule render work.
+	    // ATTENTION
 
 	    var REACT_ELEMENT_TYPE = Symbol.for('react.element');
 	    var REACT_PORTAL_TYPE = Symbol.for('react.portal');
@@ -135,19 +144,7 @@ var react_development = {exports: {}};
 
 	        return stack;
 	      };
-	    } // -----------------------------------------------------------------------------
-
-	    var enableScopeAPI = false; // Experimental Create Event Handle API.
-
-	    var enableCacheElement = false;
-	    var enableTransitionTracing = false; // No known bugs, but needs performance testing
-
-	    var enableLegacyHidden = false; // Enables unstable_avoidThisFallback feature in Fiber
-	    // stuff. Intended to enable React core members to more easily debug scheduling
-	    // issues in DEV builds.
-
-	    var enableDebugTracing = false; // Track which Fiber(s) schedule render work.
-
+	    }
 	    var ReactSharedInternals = {
 	      ReactCurrentDispatcher: ReactCurrentDispatcher,
 	      ReactCurrentBatchConfig: ReactCurrentBatchConfig,
@@ -1477,7 +1474,10 @@ var react_development = {exports: {}};
 	      return elementType;
 	    }
 
-	    var REACT_MODULE_REFERENCE = Symbol.for('react.module.reference');
+	    var REACT_MODULE_REFERENCE;
+	    {
+	      REACT_MODULE_REFERENCE = Symbol.for('react.module.reference');
+	    }
 
 	    function isValidElementType(type) {
 	      if (typeof type === 'string' || typeof type === 'function') {
