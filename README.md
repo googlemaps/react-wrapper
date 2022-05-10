@@ -1,7 +1,7 @@
 # Google Maps JavaScript API React Wrapper
 
 [![npm](https://img.shields.io/npm/v/@googlemaps/react-wrapper)](https://www.npmjs.com/package/@googlemaps/react-wrapper)
-![Build](https://github.com/googlemaps/react-wrapper/workflows/Build/badge.svg)
+![Build](https://github.com/googlemaps/react-wrapper/workflows/Test/badge.svg)
 ![Release](https://github.com/googlemaps/react-wrapper/workflows/Release/badge.svg)
 [![codecov](https://codecov.io/gh/googlemaps/react-wrapper/branch/master/graph/badge.svg)](https://codecov.io/gh/googlemaps/react-wrapper)
 ![GitHub contributors](https://img.shields.io/github/contributors/googlemaps/react-wrapper?color=green)
