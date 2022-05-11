@@ -19,4 +19,4 @@ updates:
     schedule:
       interval: "daily"
     labels:
-      - "automatic" # see .github/workflows/dependabot.yml
+      - "automerge" # see .github/workflows/dependabot.yml
