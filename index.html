@@ -13,7 +13,7 @@
 <a href="#description" id="description" style="color: inherit; text-decoration: none;">
   <h2>Description</h2>
 </a>
-<p>Wrap React components with this libary to load the Google Maps JavaScript API.</p>
+<p>Wrap React components with this library to load the Google Maps JavaScript API.</p>
 <pre><code class="language-jsx"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">Wrapper</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&quot;@googlemaps/react-wrapper&quot;</span><span class="hl-1">;</span><br/><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">MyApp</span><span class="hl-1"> = () </span><span class="hl-4">=&gt;</span><span class="hl-1"> (</span><br/><span class="hl-1">  </span><span class="hl-6">&lt;</span><span class="hl-7">Wrapper</span><span class="hl-1"> </span><span class="hl-8">apiKey</span><span class="hl-1">=</span><span class="hl-4">{</span><span class="hl-3">&quot;YOUR_API_KEY&quot;</span><span class="hl-4">}</span><span class="hl-6">&gt;</span><br/><span class="hl-1">    </span><span class="hl-6">&lt;</span><span class="hl-7">MyMapComponent</span><span class="hl-1"> </span><span class="hl-6">/&gt;</span><br/><span class="hl-1">  </span><span class="hl-6">&lt;/</span><span class="hl-7">Wrapper</span><span class="hl-6">&gt;</span><br/><span class="hl-1">);</span>
 </code></pre>
 <p>The preceding example will not render any elements unless the Google Maps JavaScript API is successfully loaded. To handle error cases and the time until load is complete, it is recommended to provide render props.</p>
