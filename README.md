@@ -10,7 +10,7 @@
 
 ## Description
 
-Wrap React components with this libary to load the Google Maps JavaScript API.
+Wrap React components with this library to load the Google Maps JavaScript API.
 
 ```jsx
 import { Wrapper } from "@googlemaps/react-wrapper";
