@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import {Loader, LoaderOptions} from '@googlemaps/js-api-loader';
-import React, {ReactElement, ReactNode, useEffect, useState} from 'react';
+import { Loader, LoaderOptions } from '@googlemaps/js-api-loader';
+import React, { ReactElement, ReactNode, useEffect, useState, memo } from 'react';
 
 export enum Status {
   LOADING = 'LOADING',
@@ -62,7 +62,7 @@ export interface WrapperProps extends LoaderOptions {
  *
  * @param props
  */
-export const Wrapper = ({
+export const Wrapper = memo(({
   children,
   render,
   callback,
@@ -91,4 +91,4 @@ export const Wrapper = ({
   if (render) return render(status);
 
   return <></>;
-};
+});
