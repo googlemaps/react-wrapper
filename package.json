@@ -45,7 +45,7 @@
     "@rollup/plugin-html": "^1.0.0",
     "@rollup/plugin-node-resolve": "^14.0.1",
     "@rollup/plugin-replace": "^4.0.0",
-    "@rollup/plugin-typescript": "^8.3.0",
+    "@rollup/plugin-typescript": "^9.0.1",
     "@testing-library/dom": "^8.0.0",
     "@testing-library/react": "^13.0.0",
     "@types/google.maps": "^3.45.6",
