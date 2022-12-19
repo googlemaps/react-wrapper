@@ -1,4 +1,4 @@
-import { r as react, L as Loader, R as React, a as ReactDOM } from './vendor-839268d6.js';
+import { r as reactExports, L as Loader, R as React, a as ReactDOM } from './vendor-55ab8be6.js';
 
 /**
  * Copyright 2021 Google LLC. All Rights Reserved.
@@ -37,8 +37,8 @@ var Status;
  * @param props
  */
 const Wrapper = ({ children, render, callback, ...options }) => {
-    const [status, setStatus] = react.exports.useState(Status.LOADING);
-    react.exports.useEffect(() => {
+    const [status, setStatus] = reactExports.useState(Status.LOADING);
+    reactExports.useEffect(() => {
         const loader = new Loader(options);
         const setStatusAndExecuteCallback = (status) => {
             if (callback)
@@ -82,8 +82,8 @@ const render = (status) => {
     return null;
 };
 function MyMapComponent({ center, zoom, }) {
-    const ref = react.exports.useRef();
-    react.exports.useEffect(() => {
+    const ref = reactExports.useRef();
+    reactExports.useEffect(() => {
         new window.google.maps.Map(ref.current, {
             center,
             zoom,

@@ -2,9 +2,17 @@ function getDefaultExportFromCjs (x) {
 	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
 }
 
-var react = {exports: {}};
+var reactExports = {};
+var react = {
+  get exports(){ return reactExports; },
+  set exports(v){ reactExports = v; },
+};
 
-var react_development = {exports: {}};
+var react_developmentExports = {};
+var react_development = {
+  get exports(){ return react_developmentExports; },
+  set exports(v){ react_developmentExports = v; },
+};
 
 /**
  * @license React
@@ -2682,22 +2690,30 @@ var react_development = {exports: {}};
 	    }
 	  })();
 	}
-} (react_development, react_development.exports));
+} (react_development, react_developmentExports));
 
 (function (module) {
 
 	{
-	  module.exports = react_development.exports;
+	  module.exports = react_developmentExports;
 	}
 } (react));
 
-var React = /*@__PURE__*/getDefaultExportFromCjs(react.exports);
+var React = /*@__PURE__*/getDefaultExportFromCjs(reactExports);
 
-var reactDom = {exports: {}};
+var reactDomExports = {};
+var reactDom = {
+  get exports(){ return reactDomExports; },
+  set exports(v){ reactDomExports = v; },
+};
 
 var reactDom_development = {};
 
-var scheduler = {exports: {}};
+var schedulerExports = {};
+var scheduler = {
+  get exports(){ return schedulerExports; },
+  set exports(v){ schedulerExports = v; },
+};
 
 var scheduler_development = {};
 
@@ -3322,7 +3338,7 @@ var scheduler_development = {};
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-{(function(){/* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */if(typeof __REACT_DEVTOOLS_GLOBAL_HOOK__!=='undefined'&&typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart==='function'){__REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());}var React=react.exports;var Scheduler=scheduler.exports;var ReactSharedInternals=React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;var suppressWarning=false;function setSuppressWarning(newSuppressWarning){{suppressWarning=newSuppressWarning;}}// In DEV, calls to console.warn and console.error get replaced
+{(function(){/* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */if(typeof __REACT_DEVTOOLS_GLOBAL_HOOK__!=='undefined'&&typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart==='function'){__REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());}var React=reactExports;var Scheduler=schedulerExports;var ReactSharedInternals=React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;var suppressWarning=false;function setSuppressWarning(newSuppressWarning){{suppressWarning=newSuppressWarning;}}// In DEV, calls to console.warn and console.error get replaced
 // by calls to these methods by a Babel plugin.
 //
 // In PROD (or in packages without access to React internals),
@@ -8264,7 +8280,7 @@ console.info('%cDownload the React DevTools '+'for a better development experien
 	}
 } (reactDom));
 
-var ReactDOM = /*@__PURE__*/getDefaultExportFromCjs(reactDom.exports);
+var ReactDOM = /*@__PURE__*/getDefaultExportFromCjs(reactDomExports);
 
 // do not edit .js files directly - edit src/index.jst
 var fastDeepEqual = function equal(a, b) {
@@ -8636,4 +8652,4 @@ class Loader {
 
 }
 
-export { Loader as L, React as R, ReactDOM as a, react as r };
+export { Loader as L, React as R, ReactDOM as a, reactExports as r };
