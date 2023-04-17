@@ -2,17 +2,9 @@ function getDefaultExportFromCjs (x) {
 	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
 }
 
-var reactExports = {};
-var react = {
-  get exports(){ return reactExports; },
-  set exports(v){ reactExports = v; },
-};
+var react = {exports: {}};
 
-var react_developmentExports = {};
-var react_development = {
-  get exports(){ return react_developmentExports; },
-  set exports(v){ react_developmentExports = v; },
-};
+var react_development = {exports: {}};
 
 /**
  * @license React
@@ -23,6 +15,7 @@ var react_development = {
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
+react_development.exports;
 
 (function (module, exports) {
 
@@ -2689,31 +2682,23 @@ var react_development = {
 	      __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 	    }
 	  })();
-	}
-} (react_development, react_developmentExports));
+	} 
+} (react_development, react_development.exports));
 
-(function (module) {
+var react_developmentExports = react_development.exports;
 
-	{
-	  module.exports = react_developmentExports;
-	}
-} (react));
+{
+  react.exports = react_developmentExports;
+}
 
+var reactExports = react.exports;
 var React = /*@__PURE__*/getDefaultExportFromCjs(reactExports);
 
-var reactDomExports = {};
-var reactDom = {
-  get exports(){ return reactDomExports; },
-  set exports(v){ reactDomExports = v; },
-};
+var reactDom = {exports: {}};
 
 var reactDom_development = {};
 
-var schedulerExports = {};
-var scheduler = {
-  get exports(){ return schedulerExports; },
-  set exports(v){ schedulerExports = v; },
-};
+var scheduler = {exports: {}};
 
 var scheduler_development = {};
 
@@ -3319,15 +3304,14 @@ var scheduler_development = {};
 	      __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 	    }
 	  })();
-	}
+	} 
 } (scheduler_development));
 
-(function (module) {
+{
+  scheduler.exports = scheduler_development;
+}
 
-	{
-	  module.exports = scheduler_development;
-	}
-} (scheduler));
+var schedulerExports = scheduler.exports;
 
 /**
  * @license React
@@ -8273,13 +8257,11 @@ if(navigator.userAgent.indexOf('Chrome')>-1&&navigator.userAgent.indexOf('Edge')
 if(/^(https?|file):$/.test(protocol)){// eslint-disable-next-line react-internal/no-production-logging
 console.info('%cDownload the React DevTools '+'for a better development experience: '+'https://reactjs.org/link/react-devtools'+(protocol==='file:'?'\nYou might need to use a local HTTP server (instead of file://): '+'https://reactjs.org/link/react-devtools-faq':''),'font-weight:bold');}}}}reactDom_development.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED=Internals;reactDom_development.createPortal=createPortal$1;reactDom_development.createRoot=createRoot$1;reactDom_development.findDOMNode=findDOMNode;reactDom_development.flushSync=flushSync$1;reactDom_development.hydrate=hydrate;reactDom_development.hydrateRoot=hydrateRoot$1;reactDom_development.render=render;reactDom_development.unmountComponentAtNode=unmountComponentAtNode;reactDom_development.unstable_batchedUpdates=batchedUpdates$1;reactDom_development.unstable_renderSubtreeIntoContainer=renderSubtreeIntoContainer;reactDom_development.version=ReactVersion;/* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */if(typeof __REACT_DEVTOOLS_GLOBAL_HOOK__!=='undefined'&&typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop==='function'){__REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());}})();}
 
-(function (module) {
+{
+  reactDom.exports = reactDom_development;
+}
 
-	{
-	  module.exports = reactDom_development;
-	}
-} (reactDom));
-
+var reactDomExports = reactDom.exports;
 var ReactDOM = /*@__PURE__*/getDefaultExportFromCjs(reactDomExports);
 
 // do not edit .js files directly - edit src/index.jst
