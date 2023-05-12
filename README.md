@@ -154,12 +154,14 @@ const mapOptions = {
   fullscreenControl: true,
 };
 ```
-
+```tsx
 const map = new window.google.maps.Map(ref.current as HTMLElement, {
   ...mapOptions,
   center,
   zoom: 10,
 });
+```
+
 By customizing these options, you can tailor the map controls to meet your specific needs.
 
 
