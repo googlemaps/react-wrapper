@@ -86,6 +86,52 @@ function MyMapComponent({
 }
 ```
 
+### Customizing Map Style and Marker Icon
+
+To customize the map style in your project, you can utilize the googleMapStyle array in the styles configuration of your map. Additionally, you have the option to use a custom icon for the map marker. Here's an example code snippet to help you get started:
+
+```tsx
+ useEffect(() => {
+    const map = new window.google.maps.Map(ref.current as HTMLElement, {
+      ...mapOptions,
+      center,
+      styles: googleMapStyle,
+    });
+
+    new google.maps.Marker({
+      position: center,
+      map: map,
+      icon: MapMarker(),
+    });
+  });
+```
+
+
+
+You can find a wide variety of map styles from resources like [Styling Wizard](https://mapstyle.withgoogle.com/) and [Snazzy Maps](https://snazzymaps.com/). These platforms offer an extensive collection of pre-defined styles for you to choose from.
+
+To customize the marker icon, you can use the provided MapMarker function, which returns an object representing the icon configuration.
+
+```tsx
+const MapMarker = () => {
+  if (typeof window === "undefined") return;
+  return {
+    path: "m12.84 20.142-...",
+    fillColor: "#FDBA56",
+    fillOpacity: 1,
+    strokeWeight: 0,
+    rotation: 0,
+    scale: 1,
+    anchor: new window.google.maps.Point(0, 20),
+  };
+};
+
+export default MapMarker;
+```
+
+Don't forget to include the MapMarker configuration in the icon property of the Google Maps marker.
+
+
 ## Examples
 
 See the [examples](https://github.com/googlemaps/react-wrapper/tree/main/examples) folder for additional usage patterns.
