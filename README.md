@@ -131,6 +131,37 @@ export default MapMarker;
 
 Don't forget to include the MapMarker configuration in the icon property of the Google Maps marker.
 
+The map controls allow users to interact with the map and access various features. You can customize the presence of controls on the map by setting boolean values for the following props:
+
+`zoomControl`: Enables the zoom control on the map.  
+`mapTypeControl`: Enables the map type control for switching between different map types.  
+`scaleControl`: Displays a scale bar on the map.  
+`streetViewControl`: Enables the street view control for navigating street-level imagery.  
+`panControl`: Enables the pan control for panning the map.  
+`rotateControl`: Enables the rotate control for rotating the map.  
+`fullscreenControl`: Enables the fullscreen control for expanding the map to fullscreen mode.  
+
+To create custom options, you can define an options object and add the desired controls as shown in the example below:  
+
+```jsx
+const mapOptions = {
+  zoomControl: true,
+  mapTypeControl: false,
+  scaleControl: true,
+  streetViewControl: false,
+  panControl: true,
+  rotateControl: false,
+  fullscreenControl: true,
+};
+```
+
+const map = new window.google.maps.Map(ref.current as HTMLElement, {
+  ...mapOptions,
+  center,
+  zoom: 10,
+});
+By customizing these options, you can tailor the map controls to meet your specific needs.
+
 
 ## Examples
 
