@@ -86,6 +86,85 @@ function MyMapComponent({
 }
 ```
 
+### Customizing Map Style and Marker Icon
+
+To customize the map style in your project, you can utilize the googleMapStyle array in the styles configuration of your map. Additionally, you have the option to use a custom icon for the map marker. Here's an example code snippet to help you get started:
+
+```tsx
+ useEffect(() => {
+    const map = new window.google.maps.Map(ref.current as HTMLElement, {
+      ...mapOptions,
+      center,
+      styles: googleMapStyle,
+    });
+
+    new google.maps.Marker({
+      position: center,
+      map: map,
+      icon: MapMarker(),
+    });
+  });
+```
+
+
+
+You can find a wide variety of map styles from resources like [Styling Wizard](https://mapstyle.withgoogle.com/) and [Snazzy Maps](https://snazzymaps.com/). These platforms offer an extensive collection of pre-defined styles for you to choose from.
+
+To customize the marker icon, you can use the provided MapMarker function, which returns an object representing the icon configuration.
+
+```tsx
+const MapMarker = () => {
+  if (typeof window === "undefined") return;
+  return {
+    path: "m12.84 20.142-...",
+    fillColor: "#FDBA56",
+    fillOpacity: 1,
+    strokeWeight: 0,
+    rotation: 0,
+    scale: 1,
+    anchor: new window.google.maps.Point(0, 20),
+  };
+};
+
+export default MapMarker;
+```
+
+Don't forget to include the MapMarker configuration in the icon property of the Google Maps marker.
+
+The map controls allow users to interact with the map and access various features. You can customize the presence of controls on the map by setting boolean values for the following props:
+
+`zoomControl`: Enables the zoom control on the map.  
+`mapTypeControl`: Enables the map type control for switching between different map types.  
+`scaleControl`: Displays a scale bar on the map.  
+`streetViewControl`: Enables the street view control for navigating street-level imagery.  
+`panControl`: Enables the pan control for panning the map.  
+`rotateControl`: Enables the rotate control for rotating the map.  
+`fullscreenControl`: Enables the fullscreen control for expanding the map to fullscreen mode.  
+
+To create custom options, you can define an options object and add the desired controls as shown in the example below:  
+
+```jsx
+const mapOptions = {
+  zoomControl: true,
+  mapTypeControl: false,
+  scaleControl: true,
+  streetViewControl: false,
+  panControl: true,
+  rotateControl: false,
+  fullscreenControl: true,
+};
+```
+```tsx
+const map = new window.google.maps.Map(ref.current as HTMLElement, {
+  ...mapOptions,
+  center,
+  zoom: 10,
+});
+```
+
+By customizing these options, you can tailor the map controls to meet your specific needs.
+
+
 ## Examples
 
 See the [examples](https://github.com/googlemaps/react-wrapper/tree/main/examples) folder for additional usage patterns.
