@@ -15,10 +15,11 @@
  */
 
 module.exports = {
-  transform: {
-    '^.+\\.tsx?$': 'ts-jest',
-  },
-  collectCoverage: true,
+  roots: ['<rootDir>'],
+  preset: 'ts-jest',
+  testEnvironment: 'jsdom',
+  testPathIgnorePatterns: ['/node_modules/', '/dist/', '/__utils__/'],
+  // collectCoverage: true,
   coverageThreshold: {
     global: {
       branches: 100,

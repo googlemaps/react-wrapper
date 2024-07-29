@@ -25,11 +25,11 @@ const OUTPUT_NAME = 'Loader';
 
 const GLOBALS = {
   react: 'React',
+  '@googlemaps/js-api-loader': 'google.maps.plugins.loader',
 };
 
 const PLUGINS = [
   typescript({tsconfig: './tsconfig.json', declarationDir: './'}),
-  ,
   resolve({
     browser: true,
     resolveOnly: [/^(?!react$)/],
