@@ -81,10 +81,12 @@ export default examples.map(name => ({
   plugins: [
     typescript(typescriptOptions),
     replace({
+      preventAssignment: true,
       'process.env.NODE_ENV': JSON.stringify('development'),
     }),
     babel({
       presets: ['@babel/preset-react'],
+      babelHelpers: 'bundled',
     }),
     commonjs(),
     nodeResolve(),
