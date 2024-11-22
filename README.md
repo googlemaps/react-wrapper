@@ -8,15 +8,25 @@
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![](https://github.com/jpoehnelt/in-solidarity-bot/raw/main/static//badge-flat-square.png)](https://github.com/apps/in-solidarity)
 
+> [!NOTE]  
+> Development of this package has been discontinued. 
+> We recommend all users of this package to switch to the new 
+> [`@vis.gl/react-google-maps`](https://www.npmjs.com/package/@vis.gl/react-google-maps),
+> which provides a collection of components and hooks and can be configured 
+> to be fully compatible with this package.
+> 
+> See [the migration guide](https://visgl.github.io/react-google-maps/docs/guides/migrating-from-react-wrapper)
+> for more details on how to switch from this package to `@vis.gl/react-google-maps`.
+
 ## Description
 
 Wrap React components with this library to load the Google Maps JavaScript API.
 
 ```jsx
-import { Wrapper } from "@googlemaps/react-wrapper";
+import {Wrapper} from '@googlemaps/react-wrapper';
 
 const MyApp = () => (
-  <Wrapper apiKey={"YOUR_API_KEY"}>
+  <Wrapper apiKey={'YOUR_API_KEY'}>
     <MyMapComponent />
   </Wrapper>
 );
@@ -25,9 +35,9 @@ const MyApp = () => (
 The preceding example will not render any elements unless the Google Maps JavaScript API is successfully loaded. To handle error cases and the time until load is complete, it is recommended to provide render props.
 
 ```jsx
-import { Wrapper, Status } from "@googlemaps/react-wrapper";
+import {Wrapper, Status} from '@googlemaps/react-wrapper';
 
-const render = (status) => {
+const render = status => {
   switch (status) {
     case Status.LOADING:
       return <Spinner />;
@@ -38,13 +48,13 @@ const render = (status) => {
   }
 };
 
-const MyApp = () => <Wrapper apiKey={"YOUR_API_KEY"} render={render} />;
+const MyApp = () => <Wrapper apiKey={'YOUR_API_KEY'} render={render} />;
 ```
 
 When combining children and render props, the children will render on success and the render prop will be executed for other status values.
 
 ```tsx
-import { Wrapper, Status } from "@googlemaps/react-wrapper";
+import {Wrapper, Status} from '@googlemaps/react-wrapper';
 
 const render = (status: Status): ReactElement => {
   if (status === Status.FAILURE) return <ErrorComponent />;
@@ -52,7 +62,7 @@ const render = (status: Status): ReactElement => {
 };
 
 const MyApp = () => (
-  <Wrapper apiKey={"YOUR_API_KEY"} render={render}>
+  <Wrapper apiKey={'YOUR_API_KEY'} render={render}>
     <MyMapComponent />
   </Wrapper>
 );
@@ -61,6 +71,7 @@ const MyApp = () => (
 ### @googlemaps/js-api-loader
 
 This wrapper uses [@googlemaps/js-api-loader][js_api_loader] to load the Google Maps JavaScript API. This library uses a singleton pattern and will not attempt to load the library more than once. All options accepted by [@googlemaps/js-api-loader][js_api_loader] are also accepted as props to the wrapper component.
+
 ### MyMapComponent
 
 The following snippets demonstrates the usage of `useRef` and `useEffect` hooks with Google Maps.
@@ -90,7 +101,8 @@ function MyMapComponent({
 
 See the [examples](https://github.com/googlemaps/react-wrapper/tree/main/examples) folder for additional usage patterns.
 
-* [Basic Demo](https://googlemaps.github.io/react-wrapper/public/basic/)
+- [Basic Demo](https://googlemaps.github.io/react-wrapper/public/basic/)
+
 ## Install
 
 Available via npm as the package [@googlemaps/react-wrapper](https://www.npmjs.com/package/@googlemaps/react-wrapper).
@@ -120,7 +132,6 @@ yarn add -D @types/google.maps
 ## Documentation
 
 The reference documentation can be found at this [link](https://googlemaps.github.io/react-wrapper/index.html).
-
 
 ## Support
 
