@@ -84,14 +84,24 @@ function MyMapComponent({
   center: google.maps.LatLngLiteral;
   zoom: number;
 }) {
-  const ref = useRef();
+  const ref = useRef<HTMLDivElement>();
+  const [map, setMap] = useState<google.maps.Map | null>(null);
 
   useEffect(() => {
-    new window.google.maps.Map(ref.current, {
-      center,
-      zoom,
-    });
-  });
+    const map = new google.maps.Map(ref.current, {center, zoom});
+    setMap(map);
+
+    return () => {
+      google.maps.event.clearInstanceListeners(map);
+      setMap(null);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!map) return;
+
+    // do something with the map instance
+  }, [map]);
 
   return <div ref={ref} id="map" />;
 }
