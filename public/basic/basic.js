@@ -1,4 +1,4 @@
-import { r as reactExports, L as Loader, R as React, a as ReactDOM } from './vendor-b123a66d.js';
+import { r as reactExports, L as Loader, R as React, c as clientExports } from './vendor-bbbc729a.js';
 
 /**
  * Copyright 2021 Google LLC. All Rights Reserved.
@@ -82,7 +82,7 @@ const render = (status) => {
     return null;
 };
 function MyMapComponent({ center, zoom, }) {
-    const ref = reactExports.useRef();
+    const ref = reactExports.useRef(null);
     reactExports.useEffect(() => {
         new window.google.maps.Map(ref.current, {
             center,
@@ -97,4 +97,6 @@ function App() {
     return (React.createElement(Wrapper, { apiKey: "", render: render },
         React.createElement(MyMapComponent, { center: center, zoom: zoom })));
 }
-ReactDOM.render(React.createElement(App, null), document.querySelector("#root"));
+const container = document.getElementById("root");
+const root = clientExports.createRoot(container);
+root.render(React.createElement(App, null));
