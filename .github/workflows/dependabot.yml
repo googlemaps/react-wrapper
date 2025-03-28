@@ -21,6 +21,7 @@ permissions:
 jobs:
   test:
     uses: ./.github/workflows/test.yml
+
   dependabot:
     needs: test
     runs-on: ubuntu-latest
