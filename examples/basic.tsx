@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 import React, { useEffect, useRef, ReactElement } from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
+
 import { Wrapper, Status } from "../src";
 
 const render = (status: Status): ReactElement => {
@@ -30,7 +31,7 @@ function MyMapComponent({
   center: google.maps.LatLngLiteral;
   zoom: number;
 }) {
-  const ref = useRef();
+  const ref = useRef(null);
 
   useEffect(() => {
     new window.google.maps.Map(ref.current, {
@@ -53,4 +54,6 @@ function App() {
   );
 }
 
-ReactDOM.render(<App />, document.querySelector("#root"));
+const container = document.getElementById("root") as HTMLElement;
+const root = createRoot(container);
+root.render(<App />);

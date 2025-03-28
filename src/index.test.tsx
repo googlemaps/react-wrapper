@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-import React from 'react';
-import {act, render} from '@testing-library/react';
-import '@testing-library/jest-dom';
+import React from "react";
+import { act, render } from "@testing-library/react";
+import "@testing-library/jest-dom";
 
-import {Status, Wrapper} from './index';
-import type {LoaderOptions} from '@googlemaps/js-api-loader';
+import { Status, Wrapper } from "./index";
+import type { LoaderOptions } from "@googlemaps/js-api-loader";
 
 // set up partial mock of @googlemaps/js-api-loader being used for the tests
 // helper to control the promise returned by Loader.load
@@ -40,7 +40,7 @@ let loaderDeferred = new Deferred<unknown>();
 const loaderSpy = jest.fn();
 const loadMock = jest.fn();
 
-jest.mock('@googlemaps/js-api-loader', () => {
+jest.mock("@googlemaps/js-api-loader", () => {
   // this is the only part of the @googlemaps/js-api-loader api
   // surface being used in the wrapper class.
   class Loader {
@@ -53,7 +53,7 @@ jest.mock('@googlemaps/js-api-loader', () => {
     }
   }
 
-  return {Loader};
+  return { Loader };
 });
 
 beforeEach(() => {
@@ -65,12 +65,12 @@ beforeEach(() => {
 
 afterEach(() => {
   // clean up jsdom
-  document.documentElement.innerHTML = '';
+  document.documentElement.innerHTML = "";
 });
 
-test('it should render children after load', async () => {
-  const {container, findByText} = render(
-    <Wrapper apiKey={'YOUR_API_KEY'}>TEST CONTENT</Wrapper>
+test("it should render children after load", async () => {
+  const { container, findByText } = render(
+    <Wrapper apiKey={"YOUR_API_KEY"}>TEST CONTENT</Wrapper>
   );
 
   expect(container).toBeEmptyDOMElement();
@@ -81,96 +81,96 @@ test('it should render children after load', async () => {
     loaderDeferred.resolve({});
   });
 
-  expect(await findByText('TEST CONTENT')).toBeVisible();
+  expect(await findByText("TEST CONTENT")).toBeVisible();
 });
 
-test('it should not render children after error', async () => {
-  const {queryByText} = render(
-    <Wrapper apiKey={'YOUR_API_KEY'}>TEST CONTENT</Wrapper>
+test("it should not render children after error", async () => {
+  const { queryByText } = render(
+    <Wrapper apiKey={"YOUR_API_KEY"}>TEST CONTENT</Wrapper>
   );
 
   await act(async () => {
-    loaderDeferred.reject(new Error('some loader error'));
+    loaderDeferred.reject(new Error("some loader error"));
   });
 
-  expect(queryByText('TEST CONTENT')).toBeNull();
+  expect(queryByText("TEST CONTENT")).toBeNull();
 });
 
-test('it should use render prop on success when there are no children', async () => {
-  const {findByTestId} = render(
+test("it should use render prop on success when there are no children", async () => {
+  const { findByTestId } = render(
     <Wrapper
-      apiKey={'YOUR_API_KEY'}
-      render={status => <div data-testid="loader-status">{status}</div>}
+      apiKey={"YOUR_API_KEY"}
+      render={(status) => <div data-testid="loader-status">{status}</div>}
     ></Wrapper>
   );
 
-  expect(await findByTestId('loader-status')).toHaveTextContent(Status.LOADING);
+  expect(await findByTestId("loader-status")).toHaveTextContent(Status.LOADING);
 
   await act(async () => {
     loaderDeferred.resolve({});
   });
 
-  expect(await findByTestId('loader-status')).toHaveTextContent(Status.SUCCESS);
+  expect(await findByTestId("loader-status")).toHaveTextContent(Status.SUCCESS);
 });
 
-test('it should use render prop on failure', async () => {
-  const {findByTestId} = render(
+test("it should use render prop on failure", async () => {
+  const { findByTestId } = render(
     <Wrapper
-      apiKey={'YOUR_API_KEY'}
-      render={status => <div data-testid="loader-status">{status}</div>}
+      apiKey={"YOUR_API_KEY"}
+      render={(status) => <div data-testid="loader-status">{status}</div>}
     ></Wrapper>
   );
 
   await act(async () => {
-    loaderDeferred.reject(new Error('some error'));
+    loaderDeferred.reject(new Error("some error"));
   });
 
-  expect(await findByTestId('loader-status')).toHaveTextContent(Status.FAILURE);
+  expect(await findByTestId("loader-status")).toHaveTextContent(Status.FAILURE);
 });
 
-test('it should use children on success when children and render prop are specified', async () => {
-  const {findByTestId, queryByTestId} = render(
+test("it should use children on success when children and render prop are specified", async () => {
+  const { findByTestId, queryByTestId } = render(
     <Wrapper
-      apiKey={'YOUR_API_KEY'}
-      render={status => <div data-testid="loader-status">{status}</div>}
+      apiKey={"YOUR_API_KEY"}
+      render={(status) => <div data-testid="loader-status">{status}</div>}
     >
       <div data-testid="content">TEST CONTENT</div>
     </Wrapper>
   );
 
-  expect(await findByTestId('loader-status')).toHaveTextContent(Status.LOADING);
+  expect(await findByTestId("loader-status")).toHaveTextContent(Status.LOADING);
 
   await act(async () => {
     loaderDeferred.resolve({});
   });
 
-  expect(await findByTestId('content')).toHaveTextContent('TEST CONTENT');
-  expect(queryByTestId('loader-status')).toBeNull();
+  expect(await findByTestId("content")).toHaveTextContent("TEST CONTENT");
+  expect(queryByTestId("loader-status")).toBeNull();
 });
 
-test('it should render multiple wrapper elements', async () => {
-  const {findByTestId} = render(
+test("it should render multiple wrapper elements", async () => {
+  const { findByTestId } = render(
     <>
       <Wrapper
-        apiKey={'YOUR_API_KEY'}
-        render={status => <div data-testid="loader1-status">{status}</div>}
+        apiKey={"YOUR_API_KEY"}
+        render={(status) => <div data-testid="loader1-status">{status}</div>}
       >
         <div data-testid="content1">TEST CONTENT 1</div>
       </Wrapper>
 
       <Wrapper
-        apiKey={'YOUR_API_KEY'}
-        render={status => <div data-testid="loader2-status">{status}</div>}
+        apiKey={"YOUR_API_KEY"}
+        render={(status) => <div data-testid="loader2-status">{status}</div>}
       >
         <div data-testid="content2">TEST CONTENT 2</div>
       </Wrapper>
     </>
   );
 
-  expect(await findByTestId('loader1-status')).toHaveTextContent(
+  expect(await findByTestId("loader1-status")).toHaveTextContent(
     Status.LOADING
   );
-  expect(await findByTestId('loader2-status')).toHaveTextContent(
+  expect(await findByTestId("loader2-status")).toHaveTextContent(
     Status.LOADING
   );
 
@@ -178,27 +178,27 @@ test('it should render multiple wrapper elements', async () => {
     loaderDeferred.resolve({});
   });
 
-  expect(await findByTestId('content1')).toHaveTextContent('TEST CONTENT 1');
-  expect(await findByTestId('content2')).toHaveTextContent('TEST CONTENT 2');
+  expect(await findByTestId("content1")).toHaveTextContent("TEST CONTENT 1");
+  expect(await findByTestId("content2")).toHaveTextContent("TEST CONTENT 2");
 
   expect(loaderSpy).toHaveBeenCalledTimes(2);
 });
 
-test('it should pass props to Loader', async () => {
-  render(<Wrapper apiKey={'YOUR_API_KEY'} libraries={['maps', 'places']} />);
+test("it should pass props to Loader", async () => {
+  render(<Wrapper apiKey={"YOUR_API_KEY"} libraries={["maps", "places"]} />);
 
   expect(loaderSpy).toHaveBeenCalledWith({
-    apiKey: 'YOUR_API_KEY',
-    libraries: ['maps', 'places'],
+    apiKey: "YOUR_API_KEY",
+    libraries: ["maps", "places"],
   });
 });
 
-test('it should execute the callback', async () => {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const {Loader: LoaderMock} = require('@googlemaps/js-api-loader');
+test("it should execute the callback", async () => {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { Loader: LoaderMock } = require("@googlemaps/js-api-loader");
   const callback = jest.fn();
 
-  render(<Wrapper apiKey={'YOUR_API_KEY'} callback={callback} />);
+  render(<Wrapper apiKey={"YOUR_API_KEY"} callback={callback} />);
 
   expect(callback.mock.calls[0][0]).toBe(Status.LOADING);
   expect(callback.mock.calls[0][1]).toBeInstanceOf(LoaderMock);
