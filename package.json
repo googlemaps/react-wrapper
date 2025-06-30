@@ -41,7 +41,7 @@
   "devDependencies": {
     "@babel/preset-react": "^7.14.5",
     "@rollup/plugin-babel": "^6.0.0",
-    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-html": "^1.0.0",
     "@rollup/plugin-node-resolve": "^15.0.0",
     "@rollup/plugin-replace": "^5.0.0",
