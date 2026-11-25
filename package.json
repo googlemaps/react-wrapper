@@ -78,5 +78,9 @@
   },
   "prettier": {
     "trailingComma": "es5"
+  },
+  "overrides": {
+    "brace-expansion@1.x": "^1.1.21",
+    "tmp": "^0.2.6"
   }
 }
